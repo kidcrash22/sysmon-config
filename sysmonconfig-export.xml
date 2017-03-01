@@ -51,6 +51,7 @@
 			<ParentCommandLine condition="contains">tasklist /FI "IMAGENAME eq devenv.exe"</ParentCommandLine>
 			<ParentCommandLine condition="contains">C:\Windows\system32\cmd.exe /s /c "tasklist /FI "IMAGENAME eq devenv.exe" /FI</ParentCommandLine>
 			<ParentImage condition="image">C:\Program Files (x86)\Microsoft Visual Studio 15\Web\External\node.exe</ParentImage>
+			<ParentImage condition="image">C:\Program Files (x86)\Microsoft Visual Studio 14.0\Web\External\node.exe</ParentImage>
 			<!--SECTION: Microsoft Windows-->
 			<IntegrityLevel condition="is">AppContainer</IntegrityLevel> <!--Microsoft:Windows: Don't care about sandboxed processes-->
 			<Image condition="is">C:\Windows\System32\audiodg.exe</Image> <!--Microsoft:Windows: Launched constantly-->
@@ -163,8 +164,7 @@
 			<Image condition="image">java.exe</Image> <!--Java: Monitor usage of vulnerable application | Credit @ion-storm -->
 			<!--Suspicious ports-->
 			<DestinationPort condition="is">22</DestinationPort> <!--SSH protocol-->
-			<DestinationPort condition="is">23</DestinationPort> <!--Telnet protocol-->
-			<DestinationPort condition="is">3389</DestinationPort> <!--Microsoft:Windows:RDP: -->
+			<DestinationPort condition="is">23</DestinationPort> <!--Telnet protocol--> <!--Microsoft:Windows:RDP: -->
 			<DestinationPort condition="is">5800</DestinationPort> <!--VNC protocol-->
 			<DestinationPort condition="is">5900</DestinationPort> <!--VNC protocol-->
 			<DestinationPort condition="is">9001</DestinationPort> <!--Tor protocol [ http://www.computerworlduk.com/tutorial/security/tor-enterprise-2016-blocking-malware-darknet-use-rogue-nodes-3633907/ ] -->
@@ -296,6 +296,8 @@
 			<Image condition="is">C:\Program Files (x86)\Dell\CommandUpdate\InvColPC.exe</Image>
 			<!--SECTION: Intel-->
 			<Image condition="is">C:\Windows\system32\igfxCUIService.exe</Image> <!--Intel: Drops bat and other files in \Windows in normal operation-->
+			<!--Sophos AU-->
+			<Image condition="is">C:\Program Files (x86)\Sophos\AutoUpdate\ALsvc.exe</Image>
 		</FileCreate>
 
 	<!--SYSMON EVENT ID 12 & 13 & 14 : REGISTRY MODIFICATION -->
