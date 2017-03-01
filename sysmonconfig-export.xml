@@ -20,7 +20,7 @@
 	surface anomalous activity as quickly as possible to any technician armed only with Event Viewer.
 
   NOTE:	Sysmon is not hardened against a determined attacker with admin rights. Also, this configuration offers an attacker, willing
-	to study it closely, several ways to evade some of the alerting. If you are in a high-threat environment and have significant 
+	to study it closely, several ways to evade some of the alerting. If you are in a high-threat environment and have significant
 	security staff, you should consider a much broader log-all approach. However, in the vast majority of cases, an attacker
 	will bumble along through multiple behavioral traps which this configuration monitors, especially in the first minutes.
 
@@ -39,6 +39,18 @@
 		<!--COMMENT:	All process launched will be included in log, except for what matches a rule below. It's best to be as specific as possible, to
 				avoid user-mode executables immitating other process names to avoid logging, or if malware drops files in an existing directory.
 				Ultimately, you must weigh CPU time checking many detailed rules, against the risk of malware exploiting the blindness created.-->
+			<!--SECTION: Splunk-->
+			<Image condition="begin with">C:\Program Files\SplunkUniversalForwarder\bin</Image>
+			<Image condition="begin with">C:\Program Files\Splunk\bin</Image>
+			<!--Sophos-->
+			<Image condition="begin with">C:\Program Files (x86)\Sophos\</Image>
+			<Image condition="begin with">C:\ProgramData\Sophos\</Image>
+			<!--PDQ-->
+			<Image condition="begin with">C:\Program Files (x86)\Admin Arsenal\</Image>
+			<!--Friggen Dev people!-->
+			<ParentCommandLine condition="contains">tasklist /FI "IMAGENAME eq devenv.exe"</ParentCommandLine>
+			<ParentCommandLine condition="contains">C:\Windows\system32\cmd.exe /s /c "tasklist /FI "IMAGENAME eq devenv.exe" /FI</ParentCommandLine>
+			<ParentImage condition="image">C:\Program Files (x86)\Microsoft Visual Studio 15\Web\External\node.exe</ParentImage>
 			<!--SECTION: Microsoft Windows-->
 			<IntegrityLevel condition="is">AppContainer</IntegrityLevel> <!--Microsoft:Windows: Don't care about sandboxed processes-->
 			<Image condition="is">C:\Windows\System32\audiodg.exe</Image> <!--Microsoft:Windows: Launched constantly-->
@@ -296,7 +308,7 @@
 		<!--DATA: EventType, UtcTime, ProcessGuid, ProcessId, Image, TargetObject, Details, NewName-->
 		<!--TECHNICAL:	Possible prefixes are HKLM, HKCR, and HKEY_USERS-->
 		<!--CRITICAL:	Schema version 3.30 and higher use HKLM and HKEY_USERS and HKCR and CurrentControlSet instead of REGISTRY\MACHINE\ and \REGISTRY\USER\ and ControlSet001-->
-		
+
 		<RegistryEvent onmatch="include">
 			<!--Autorun or Startups-->
 				<!--ADDITIONAL REFERENCE: [ http://www.ghacks.net/2016/06/04/windows-automatic-startup-locations/ ] -->
