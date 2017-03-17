@@ -74,13 +74,11 @@
 			<ParentImage condition="is">C:\Windows\system32\SearchIndexer.exe</ParentImage> <!--Microsoft:Windows:Search: Launches many uninteresting sub-processes-->
 			<!--SECTION: Microsoft:Windows:Defender-->
 			<Image condition="begin with">C:\Program Files\Windows Defender</Image> <!--Microsoft:Windows:Defender in Win10-->
-<<<<<<< HEAD
 			<Image condition="end with">C:\Windows\System32\CompatTelRunner.exe</Image> <!--Microsoft:Windows:Customer Experience Improvement-->
 			<Image condition="is">C:\Windows\System32\wermgr.exe</Image> <!--Microsoft:Windows: Error reporting/telemetry-->
 			<Image condition="is">C:\Windows\SysWOW64\wermgr.exe</Image> <!--Microsoft:Windows: Error reporting/telemetry-->
 			<!--SECTION: Microsoft dotNet-->
 			<Image condition="is">C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ngen.exe</Image>
-=======
 			<Image condition="is">C:\Windows\System32\MpSigStub.exe</Image> <!--Microsoft:Windows: Microsoft Malware Protection Signature Update Stub-->
 			<Image condition="begin with">C:\Windows\SoftwareDistribution\Download\Install\AM_Base</Image> <!--Microsoft:Defender: Full signature updates-->
 			<Image condition="begin with">C:\Windows\SoftwareDistribution\Download\Install\AM_Delta</Image> <!--Microsoft:Defender: Delta signature updates-->
@@ -107,7 +105,6 @@
 			<ParentCommandLine condition="is">C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted</ParentCommandLine> <!--Microsoft:Windows: Network services-->
 			<!--SECTION: Microsoft:dotNet-->
 			<CommandLine condition="begin with">C:\Windows\Microsoft.NET\Framework\v4.0.30319\ngen.exe</CommandLine> <!--Microsoft:DotNet-->
->>>>>>> f4dafc2c42060191e1dc4007fb4071d6e7e1b86f
 			<Image condition="is">C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorsvw.exe</Image> <!--Microsoft:DotNet-->
 			<Image condition="is">C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorsvw.exe</Image> <!--Microsoft:DotNet-->
 			<Image condition="is">C:\Windows\Microsoft.Net\Framework64\v3.0\WPF\PresentationFontCache.exe</Image> <!--Microsoft:Windows: Font cache service-->
@@ -211,12 +208,8 @@
 			<Image condition="image">tor.exe</Image> <!--Tor [ https://www.hybrid-analysis.com/sample/800bf028a23440134fc834efc5c1e02cc70f05b2e800bbc285d7c92a4b126b1c?environmentId=100 ] -->
 			<!--Ports: Suspicious-->
 			<DestinationPort condition="is">22</DestinationPort> <!--SSH protocol-->
-<<<<<<< HEAD
-=======
 			<DestinationPort condition="is">23</DestinationPort> <!--Telnet protocol-->
 			<DestinationPort condition="is">25</DestinationPort> <!--SMTP mail protocol-->
-			<DestinationPort condition="is">3389</DestinationPort> <!--Microsoft:Windows:RDP-->
->>>>>>> f4dafc2c42060191e1dc4007fb4071d6e7e1b86f
 			<DestinationPort condition="is">5800</DestinationPort> <!--VNC protocol-->
 			<DestinationPort condition="is">5900</DestinationPort> <!--VNC protocol-->
 			<!--Ports: Proxy-->
@@ -230,11 +223,8 @@
 			<DestinationPort condition="is">9030</DestinationPort> <!--Tor protocol [ http://www.computerworlduk.com/tutorial/security/tor-enterprise-2016-blocking-malware-darknet-use-rogue-nodes-3633907/ ] -->
 		</NetworkConnect>
 		<NetworkConnect onmatch="exclude">
-<<<<<<< HEAD
 			<Image condition="end with">g2mcomm.exe</Image>
 			<Image condition="image">Spotify.exe</Image> <!--Spotify-->
-=======
->>>>>>> f4dafc2c42060191e1dc4007fb4071d6e7e1b86f
 			<Image condition="image">OneDrive.exe</Image> <!--Microsoft:OneDrive-->
 			<Image condition="image">Spotify.exe</Image> <!--Spotify-->
 			<Image condition="end with">AppData\Roaming\Dropbox\bin\Dropbox.exe</Image> <!--Dropbox-->
